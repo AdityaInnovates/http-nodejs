@@ -18,6 +18,15 @@ var webp = require("webp-converter-jr");
 const { Blob } = require("buffer");
 const { URLSearchParams } = require("url");
 const extractFrames = require("ffmpeg-extract-frames");
+var express = require("express");
+var app = express();
+var path = require("path");
+
+app.use(express.static(__dirname + "/"));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./index.html"));
+});
+app.listen(process.env.PORT || 8080);
 
 // const client = new Client();
 
