@@ -35,18 +35,18 @@ mongoose
       puppeteer: {
         executablePath: "/usr/bin/brave-browser-stable",
       },
-      // authStrategy: new LocalAuth({
-      //   clientId: "client-one",
-      // }),
+      authStrategy: new LocalAuth({
+        clientId: "client-one",
+      }),
       puppeteer: {
-        headless: true,
+        headless: false,
         args: ["--no-sandbox", "--disable-setuid-sandbox"],
         // headless: false,
       },
-      authStrategy: new RemoteAuth({
-        store: store,
-        backupSyncMs: 300000,
-      }),
+      // authStrategy: new RemoteAuth({
+      //   store: store,
+      //   backupSyncMs: 300000,
+      // }),
     });
 
     //Start Of Client.On Codes
@@ -66,20 +66,21 @@ mongoose
     client.on("message", async (msg) => {
       if (msg.body.toUpperCase() == "HEY BOOGY") {
         msg.reply("hey " + msg._data.notifyName + " How It's Going .. Bro😎");
-        var msgtosend = MessageMedia.fromFilePath("./public/boogy.webp");
+        var msgtosend = MessageMedia.fromFilePath("./public/Boogy.webp");
         msg.reply(msgtosend, "", { sendMediaAsSticker: true });
       }
       if (msg._data.type == "sticker") {
         // console.log(msg);
         // msg.downloadMedia().then((e) => {
-        //   console.log(e);
+        //   console.log(JSON.stringify(e));
         //   fs.writeFile(
-        //     "./public/BoogyLazy.webp",
-        //     new Buffer.from(e.data, "base64"),
+        //     "./public/BoogyLazyJSON.json",
+        //     JSON.stringify(e),
         //     (d) => {
         //       console.log(d);
         //     }
         //   );
+        // });
         // client.sendMessage(msg._data.id._serialized.split("_")[1], e, {
         //   sendMediaAsSticker: true,
         //   stickerName: "Boogy Bot!",
@@ -107,7 +108,7 @@ mongoose
                 } else if (m._data.quotedMsg.type == "sticker") {
                   if (reg.test(tosendCount)) {
                     var msgtosend = MessageMedia.fromFilePath(
-                      "./public/boogyLazy.webp"
+                      "./public/BoogyLazy.webp"
                     );
                     var delidsnd = await client.sendMessage(
                       m._data.id._serialized.split("_")[1],
@@ -278,7 +279,7 @@ mongoose
                 } else if (m._data.quotedMsg.type == "image") {
                   if (reg.test(tosendCount)) {
                     var msgtosend = MessageMedia.fromFilePath(
-                      "./public/boogyLazy.webp"
+                      "./public/BoogyLazy.webp"
                     );
                     var delidsnd = await client.sendMessage(
                       m._data.id._serialized.split("_")[1],
@@ -323,7 +324,7 @@ mongoose
             if (tosenddat.includes("dp")) {
               m.delete(true);
               var msgtosend = MessageMedia.fromFilePath(
-                "./public/boogyLazy.webp"
+                "./public/BoogyLazy.webp"
               );
               var delidsnd = await client.sendMessage(
                 m._data.id._serialized.split("_")[1],
