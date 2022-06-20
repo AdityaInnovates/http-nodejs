@@ -9,15 +9,15 @@ const qrcode = require("qrcode-terminal");
 const fs = require("fs");
 const Axios = require("axios");
 var FormData = require("form-data");
-const {
-  Sticker,
-  createSticker,
-  StickerTypes,
-} = require("wa-sticker-formatter-gsf");
-var webp = require("webp-converter-jr");
+// const {
+//   Sticker,
+//   createSticker,
+//   StickerTypes,
+// } = require("wa-sticker-formatter-gsf");
+// var webp = require("webp-converter-jr");
 const { Blob } = require("buffer");
 const { URLSearchParams } = require("url");
-const extractFrames = require("ffmpeg-extract-frames");
+// const extractFrames = require("ffmpeg-extract-frames");
 var express = require("express");
 var app = express();
 var path = require("path");
