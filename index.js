@@ -29,9 +29,9 @@ const client = new Client({
     clientId: "client-one",
   }),
   puppeteer: {
-    // headless: true,
+    headless: true,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    headless: false,
+    // headless: false,
   },
 });
 
@@ -62,17 +62,17 @@ client.on("message", async (msg) => {
     //   });
     // });
   }
-  console.log(msg);
+  // console.log(msg);
 });
 var reg = new RegExp("^[0-9]*$");
 client.on("message_create", async (m) => {
   if (m._data.id.fromMe) {
-    console.log(m);
+    // console.log(m);
     if (m._data.body?.length >= 10) {
       if (m._data.body.substring(0, 8).toUpperCase() == "SPAMHERE") {
         m.delete(true);
         const tosenddat = m._data.body.substring(9, m._data.body.length);
-        console.log(tosenddat);
+        // console.log(tosenddat);
         const tosendCount = m._data.body.substring(9, 12);
         if (m.hasQuotedMsg) {
           if (reg.test(tosendCount)) {
@@ -82,8 +82,8 @@ client.on("message_create", async (m) => {
               }
             } else if (m._data.quotedMsg.type == "sticker") {
               if (reg.test(tosendCount)) {
-                console.log("hmm");
-                console.log(m._data.to);
+                // console.log("hmm");
+                // console.log(m._data.to);
                 m.getQuotedMessage().then(async (dat) => {
                   if (dat.hasMedia) {
                     var dd = await dat.downloadMedia();
