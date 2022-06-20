@@ -25,6 +25,8 @@ var path = require("path");
 const { MongoStore } = require("wwebjs-mongo");
 const mongoose = require("mongoose");
 
+app.use("/public", express.static(path.join(__dirname + "/public")));
+
 mongoose
   .connect(
     "mongodb+srv://aditya:aditya123@cluster0.9vjkq.mongodb.net/SessionData"
@@ -39,7 +41,7 @@ mongoose
         clientId: "client-one",
       }),
       puppeteer: {
-        headless: false,
+        headless: true,
         args: ["--no-sandbox", "--disable-setuid-sandbox"],
         // headless: false,
       },
