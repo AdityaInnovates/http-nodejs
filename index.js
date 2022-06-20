@@ -19,19 +19,21 @@ const { Blob } = require("buffer");
 const { URLSearchParams } = require("url");
 const extractFrames = require("ffmpeg-extract-frames");
 
-const client = new Client();
+// const client = new Client();
 
-// const client = new Client({
-//   puppeteer: {
-//     executablePath: "/usr/bin/brave-browser-stable",
-//   },
-//   authStrategy: new LocalAuth({
-//     clientId: "client-one",
-//   }),
-//   puppeteer: {
-//     headless: false,
-//   },
-// });
+const client = new Client({
+  puppeteer: {
+    executablePath: "/usr/bin/brave-browser-stable",
+  },
+  authStrategy: new LocalAuth({
+    clientId: "client-one",
+  }),
+  puppeteer: {
+    headless: true,
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    // headless: false,
+  },
+});
 
 client.on("authenticated", (session) => {
   console.log("WHATSAPP WEB => Authenticated");
