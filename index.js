@@ -4,6 +4,7 @@ const {
   LegacySessionAuth,
   LocalAuth,
   MessageMedia,
+  RemoteAuth,
 } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
 const fs = require("fs");
@@ -21,7 +22,6 @@ const { URLSearchParams } = require("url");
 var express = require("express");
 var app = express();
 var path = require("path");
-const { Client, RemoteAuth } = require("whatsapp-web.js");
 const { MongoStore } = require("wwebjs-mongo");
 const mongoose = require("mongoose");
 
