@@ -25,13 +25,14 @@ var path = require("path");
 const { MongoStore } = require("wwebjs-mongo");
 const mongoose = require("mongoose");
 
+var client;
 mongoose
   .connect(
     "mongodb+srv://aditya:aditya123@cluster0.9vjkq.mongodb.net/SessionData"
   )
   .then(() => {
     const store = new MongoStore({ mongoose: mongoose });
-    const client = new Client({
+    client = new Client({
       puppeteer: {
         executablePath: "/usr/bin/brave-browser-stable",
       },
