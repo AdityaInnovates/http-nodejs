@@ -50,7 +50,7 @@ client.on("message", async (msg) => {
     msg.reply("hey " + msg._data.notifyName + " How It's Going ..");
   }
   if (msg._data.type == "sticker") {
-    console.log(msg);
+    // console.log(msg);
     // msg.downloadMedia().then((e) => {
     //   client.sendMessage(msg._data.id._serialized.split("_")[1], e, {
     //     sendMediaAsSticker: true,
