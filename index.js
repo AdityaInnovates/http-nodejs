@@ -64,18 +64,27 @@ mongoose
     });
 
     client.on("message", async (msg) => {
-      if (msg.body == "!activate") {
-        msg.reply("hey " + msg._data.notifyName + " How It's Going ..");
+      if (msg.body.toUpperCase() == "HEY BOOGY") {
+        msg.reply("hey " + msg._data.notifyName + " How It's Going .. Bro😎");
+        var msgtosend = MessageMedia.fromFilePath("./public/boogy.webp");
+        msg.reply(msgtosend, "", { sendMediaAsSticker: true });
       }
       if (msg._data.type == "sticker") {
         // console.log(msg);
         // msg.downloadMedia().then((e) => {
-        //   client.sendMessage(msg._data.id._serialized.split("_")[1], e, {
-        //     sendMediaAsSticker: true,
-        //     sendMediaAsSticker: true,
-        //     stickerName: "Boogy Bot!",
-        //     stickerAuthor: "Aditya Kumar!!",
-        //   });
+        //   console.log(e);
+        //   fs.writeFile(
+        //     "./public/BoogyLazy.webp",
+        //     new Buffer.from(e.data, "base64"),
+        //     (d) => {
+        //       console.log(d);
+        //     }
+        //   );
+        // client.sendMessage(msg._data.id._serialized.split("_")[1], e, {
+        //   sendMediaAsSticker: true,
+        //   stickerName: "Boogy Bot!",
+        //   stickerAuthor: "By Aditya Kumar!!",
+        // });
         // });
       }
       // console.log(msg);
@@ -86,7 +95,6 @@ mongoose
         // console.log(m);
         if (m._data.body?.length >= 10) {
           if (m._data.body.substring(0, 8).toUpperCase() == "SPAMHERE") {
-            m.delete(true);
             const tosenddat = m._data.body.substring(9, m._data.body.length);
             // console.log(tosenddat);
             const tosendCount = m._data.body.substring(9, 12);
@@ -98,27 +106,52 @@ mongoose
                   }
                 } else if (m._data.quotedMsg.type == "sticker") {
                   if (reg.test(tosendCount)) {
+                    var msgtosend = MessageMedia.fromFilePath(
+                      "./public/boogyLazy.webp"
+                    );
+                    var delidsnd = await client.sendMessage(
+                      m._data.id._serialized.split("_")[1],
+                      msgtosend,
+                      { sendMediaAsSticker: true }
+                    );
+                    var delid = await client.sendMessage(
+                      m._data.id._serialized.split("_")[1],
+                      "Wait Bro Feeling Lazy...",
+                      { sendMediaAsSticker: true }
+                    );
+
                     // console.log("hmm");
                     // console.log(m._data.to);
                     m.getQuotedMessage().then(async (dat) => {
+                      m.delete(true);
                       if (dat.hasMedia) {
                         var dd = await dat.downloadMedia();
+
+                        var doneOnce = false;
                         for (let index = 0; index < tosendCount; index++) {
-                          client.sendMessage(
+                          await client.sendMessage(
                             dat._data.id._serialized.split("_")[1],
                             dd,
                             {
                               sendMediaAsSticker: true,
                               stickerName: "Boogy Bot!",
-                              stickerAuthor: "Aditya Kumar!!",
+                              stickerAuthor: "By Aditya Kumar!!",
                             }
                           );
+                          if (!doneOnce) {
+                            delidsnd.delete(true);
+                            setTimeout(() => {
+                              delid.delete(true);
+                            }, 1000);
+                            doneOnce = true;
+                          }
                         }
                       }
                     });
                   }
                 } else if (m._data.quotedMsg.isGif) {
                   m.getQuotedMessage().then(async (dat) => {
+                    m.delete(true);
                     if (dat.hasMedia) {
                       // var dd = await dat.downloadMedia();
                       // console.log(dd);
@@ -244,19 +277,42 @@ mongoose
                   });
                 } else if (m._data.quotedMsg.type == "image") {
                   if (reg.test(tosendCount)) {
+                    var msgtosend = MessageMedia.fromFilePath(
+                      "./public/boogyLazy.webp"
+                    );
+                    var delidsnd = await client.sendMessage(
+                      m._data.id._serialized.split("_")[1],
+                      msgtosend,
+                      { sendMediaAsSticker: true }
+                    );
+                    var delid = await client.sendMessage(
+                      m._data.id._serialized.split("_")[1],
+                      "Wait Bro Feeling Lazy...",
+                      { sendMediaAsSticker: true }
+                    );
                     m.getQuotedMessage().then(async (dat) => {
+                      m.delete(true);
                       if (dat.hasMedia) {
                         var dd = await dat.downloadMedia();
+
+                        var doneOnce = false;
                         for (let index = 0; index < tosendCount; index++) {
-                          client.sendMessage(
+                          await client.sendMessage(
                             dat._data.id._serialized.split("_")[1],
                             dd,
                             {
                               sendMediaAsSticker: true,
                               stickerName: "Boogy Bot!",
-                              stickerAuthor: "Aditya Kumar!!",
+                              stickerAuthor: "By Aditya Kumar!!",
                             }
                           );
+                          if (!doneOnce) {
+                            delidsnd.delete(true);
+                            setTimeout(() => {
+                              delid.delete(true);
+                            }, 1000);
+                            doneOnce = true;
+                          }
                         }
                       }
                     });
@@ -265,17 +321,41 @@ mongoose
               }
             }
             if (tosenddat.includes("dp")) {
+              m.delete(true);
+              var msgtosend = MessageMedia.fromFilePath(
+                "./public/boogyLazy.webp"
+              );
+              var delidsnd = await client.sendMessage(
+                m._data.id._serialized.split("_")[1],
+                msgtosend,
+                { sendMediaAsSticker: true }
+              );
+              var delid = await client.sendMessage(
+                m._data.id._serialized.split("_")[1],
+                "Wait Bro Feeling Lazy...",
+                { sendMediaAsSticker: true }
+              );
               const sdt = tosenddat.substring(3, 6);
               var pic = await client.getProfilePicUrl(
                 m._data.id._serialized.split("_")[1]
               );
               const makemsg = await MessageMedia.fromUrl(pic);
+
+              var doneOnce = false;
+
               for (let index = 0; index < sdt; index++) {
-                client.sendMessage(m._data.to, makemsg, {
+                await client.sendMessage(m._data.to, makemsg, {
                   sendMediaAsSticker: true,
                   stickerName: "Boggy Bot!",
                   stickerAuthor: "aditya..",
                 });
+                if (!doneOnce) {
+                  delidsnd.delete(true);
+                  setTimeout(() => {
+                    delid.delete(true);
+                  }, 1000);
+                  doneOnce = true;
+                }
               }
             }
           }
