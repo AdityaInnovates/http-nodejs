@@ -354,7 +354,7 @@ mongoose
                 await client.sendMessage(m._data.to, makemsg, {
                   sendMediaAsSticker: true,
                   stickerName: "Boggy Bot!",
-                  stickerAuthor: "aditya..",
+                  stickerAuthor: "By Aditya!!",
                 });
                 if (!doneOnce) {
                   delidsnd.delete(true);
