@@ -1,0 +1,20 @@
+{
+  "name": "wabot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "aditya",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "ffmpeg-extract-frames": "^2.0.2",
+    "qrcode-terminal": "^0.12.0",
+    "wa-sticker-formatter-gsf": "^4.2.1",
+    "webp-converter-jr": "^2.1.6",
+    "whatsapp-web.js": "^1.16.7"
+  },
+  "exports": "./index.js"
+}
