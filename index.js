@@ -104,8 +104,12 @@ mongoose
             if (m.hasQuotedMsg) {
               if (reg.test(tosendCount)) {
                 if (m._data.quotedMsg.type == "chat") {
+                  m.delete(true);
                   for (let index = 0; index < tosendCount; index++) {
-                    client.sendMessage(m._data.to, m._data.quotedMsg.body);
+                    await client.sendMessage(
+                      m._data.to,
+                      m._data.quotedMsg.body
+                    );
                   }
                 } else if (m._data.quotedMsg.type == "sticker") {
                   if (reg.test(tosendCount)) {
