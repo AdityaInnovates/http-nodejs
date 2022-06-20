@@ -21,6 +21,36 @@ const { URLSearchParams } = require("url");
 var express = require("express");
 var app = express();
 var path = require("path");
+const { Client, RemoteAuth } = require("whatsapp-web.js");
+const { MongoStore } = require("wwebjs-mongo");
+const mongoose = require("mongoose");
+
+mongoose
+  .connect(
+    "mongodb+srv://aditya:aditya123@cluster0.9vjkq.mongodb.net/SessionData"
+  )
+  .then(() => {
+    const store = new MongoStore({ mongoose: mongoose });
+    const client = new Client({
+      puppeteer: {
+        executablePath: "/usr/bin/brave-browser-stable",
+      },
+      authStrategy: new LocalAuth({
+        clientId: "client-one",
+      }),
+      puppeteer: {
+        headless: true,
+        args: ["--no-sandbox", "--disable-setuid-sandbox"],
+        // headless: false,
+      },
+      authStrategy: new RemoteAuth({
+        store: store,
+        backupSyncMs: 300000,
+      }),
+    });
+
+    client.initialize();
+  });
 
 app.use(express.static(__dirname + "/"));
 app.get("*", (req, res) => {
@@ -30,19 +60,19 @@ app.listen(process.env.PORT || 8080);
 
 // const client = new Client();
 
-const client = new Client({
-  puppeteer: {
-    executablePath: "/usr/bin/brave-browser-stable",
-  },
-  authStrategy: new LocalAuth({
-    clientId: "client-one",
-  }),
-  puppeteer: {
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    // headless: false,
-  },
-});
+// const client = new Client({
+//   puppeteer: {
+//     executablePath: "/usr/bin/brave-browser-stable",
+//   },
+//   authStrategy: new LocalAuth({
+//     clientId: "client-one",
+//   }),
+//   puppeteer: {
+//     headless: true,
+//     args: ["--no-sandbox", "--disable-setuid-sandbox"],
+//     // headless: false,
+//   },
+// });
 
 client.on("authenticated", (session) => {
   console.log("WHATSAPP WEB => Authenticated");
