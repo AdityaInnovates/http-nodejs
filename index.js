@@ -37,18 +37,18 @@ mongoose
       puppeteer: {
         executablePath: "/usr/bin/brave-browser-stable",
       },
-      authStrategy: new LocalAuth({
-        clientId: "client-one",
-      }),
+      // authStrategy: new LocalAuth({
+      //   clientId: "client-one",
+      // }),
       puppeteer: {
         headless: true,
         args: ["--no-sandbox", "--disable-setuid-sandbox"],
         // headless: false,
       },
-      // authStrategy: new RemoteAuth({
-      //   store: store,
-      //   backupSyncMs: 300000,
-      // }),
+      authStrategy: new RemoteAuth({
+        store: store,
+        backupSyncMs: 300000,
+      }),
     });
 
     //Start Of Client.On Codes
