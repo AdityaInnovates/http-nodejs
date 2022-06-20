@@ -35,7 +35,7 @@ mongoose
     const store = new MongoStore({ mongoose: mongoose });
     const client = new Client({
       puppeteer: {
-        executablePath: "/usr/bin/brave-browser-stable",
+        executablePath: "/usr/bin/chromium-browser",
       },
       // authStrategy: new LocalAuth({
       //   clientId: "client-one",
