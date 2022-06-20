@@ -29,9 +29,9 @@ const client = new Client({
     clientId: "client-one",
   }),
   puppeteer: {
-    headless: true,
+    // headless: true,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    // headless: false,
+    headless: false,
   },
 });
 
