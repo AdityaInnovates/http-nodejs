@@ -35,7 +35,8 @@ mongoose
     const store = new MongoStore({ mongoose: mongoose });
     const client = new Client({
       puppeteer: {
-        executablePath: "/usr/bin/brave-browser-stable",
+        executablePath:
+          "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
       },
       // authStrategy: new LocalAuth({
       //   clientId: "client-one",
