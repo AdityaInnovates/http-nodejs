@@ -35,7 +35,7 @@ mongoose
     const store = new MongoStore({ mongoose: mongoose });
     const client = new Client({
       puppeteer: {
-        executablePath: "/usr/bin/chromium-browser",
+        executablePath: "/usr/bin/brave-browser-stable",
       },
       // authStrategy: new LocalAuth({
       //   clientId: "client-one",
@@ -160,7 +160,7 @@ mongoose
                   m.getQuotedMessage().then(async (dat) => {
                     m.delete(true);
                     if (dat.hasMedia) {
-                      // var dd = await dat.downloadMedia();
+                      var dd = await dat.downloadMedia();
                       // console.log(dd);
                       // await fs.writeFileSync(
                       //   "stickerName.mp4",
@@ -168,13 +168,13 @@ mongoose
                       // );
                       // // var datbuf = await new Buffer.from(dd.data, "base64");
                       // var msgofbuf = MessageMedia.fromFilePath("stickerName.mp4");
-                      // client.sendMessage(
-                      //   dat._data.id._serialized.split("_")[1],
-                      //   msgofbuf,
-                      //   {
-                      //     sendMediaAsSticker: true,
-                      //   }
-                      // );
+                      client.sendMessage(
+                        dat._data.id._serialized.split("_")[1],
+                        msgofbuf,
+                        {
+                          sendVideoAsGif: true,
+                        }
+                      );
                       // await extractFrames({
                       //   input: "stickerName.mp4",
                       //   output: `./temp/for${
