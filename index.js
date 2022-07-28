@@ -36,7 +36,7 @@ mongoose
     const client = new Client({
       puppeteer: {
         executablePath:
-          "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+          "/usr/bin/google-chrome-stable",
       },
       // authStrategy: new LocalAuth({
       //   clientId: "client-one",
