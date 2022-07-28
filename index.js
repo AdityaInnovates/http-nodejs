@@ -170,7 +170,7 @@ mongoose
                       // var msgofbuf = MessageMedia.fromFilePath("stickerName.mp4");
                       client.sendMessage(
                         dat._data.id._serialized.split("_")[1],
-                        msgofbuf,
+                        dd,
                         {
                           sendVideoAsGif: true,
                         }
