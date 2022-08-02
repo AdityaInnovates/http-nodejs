@@ -35,8 +35,7 @@ mongoose
     const store = new MongoStore({ mongoose: mongoose });
     const client = new Client({
       puppeteer: {
-        executablePath:
-          "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+        executablePath: "/usr/bin/google-chrome-stable",
       },
       // authStrategy: new LocalAuth({
       //   clientId: "client-one",
@@ -380,7 +379,11 @@ app.use(express.static(__dirname + "/"));
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./index.html"));
 });
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 8080, () => {
+  console.log(
+    `listen started on ${process.env.PORT ? process.env.PORT : "8080"}`
+  );
+});
 
 // const client = new Client();
 
