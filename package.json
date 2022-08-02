@@ -17,5 +17,7 @@
     "whatsapp-web.js": "github:jtourisNS/whatsapp-web.js#RemoteAuth",
     "wwebjs-mongo": "^1.0.4"
   },
+  "devDependencies": {
+  },
   "exports": "./index.js"
 }
