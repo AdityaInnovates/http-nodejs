@@ -14,11 +14,10 @@
     "express": "^4.18.1",
     "mongoose": "^6.4.0",
     "qrcode-terminal": "^0.12.0",
-  },
-  "devDependencies": {
-    
     "whatsapp-web.js": "github:jtourisNS/whatsapp-web.js#RemoteAuth",
     "wwebjs-mongo": "^1.0.4"
+  },
+  "devDependencies": {
   },
   "exports": "./index.js"
 }
