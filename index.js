@@ -33,7 +33,7 @@ app.use("/public", express.static(path.join(__dirname + "/public")));
 //     "mongodb+srv://aditya:aditya123@cluster0.9vjkq.mongodb.net/SessionData"
 //   )
 //   .then(() => {
-const store = new MongoStore({ mongoose: mongoose });
+// const store = new MongoStore({ mongoose: mongoose });
 const client = new Client({
   userAgent:
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36",
