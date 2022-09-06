@@ -130,7 +130,7 @@ client.on("message", async (msg) => {
 });
 var reg = new RegExp("^[0-9]*$");
 client.on("message_create", async (m) => {
-  console.log(m);
+  // console.log(m);
   if (m._data.id.fromMe) {
     // console.log(m);
     if (m._data.body?.length >= 10) {
@@ -442,12 +442,11 @@ app.get("/", (req, res) => {
 });
 app.post("/forwardmsg", (req, res) => {
   (async () => {
-    console.log("working");
     await client2.sendMessage("919473487106@c.us", `HI its boogy Bot!`);
     await client2.sendMessage("919473487106@c.us", req.body.for);
     client2.on("message_create", (msg) => {
       if (msg._data.id.fromMe) {
-        console.log(msg._data.id._serialized.split("_")[1]);
+        // console.log(msg._data.id._serialized.split("_")[1]);
       }
     });
   })();
