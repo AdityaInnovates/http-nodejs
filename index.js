@@ -44,9 +44,9 @@ const client = new Client({
   //   clientId: "client-one",
   // }),
   puppeteer: {
-    // headless: true,
+    headless: true,
     // args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    headless: false,
+    // headless: false,
   },
   authStrategy: new LocalAuth({ clientId: "client-one" }),
   // authStrategy: new RemoteAuth({
@@ -64,9 +64,9 @@ const client2 = new Client({
   //   clientId: "client-one",
   // }),
   puppeteer: {
-    // headless: true,
+    headless: true,
     // args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    headless: false,
+    // headless: false,
   },
   authStrategy: new LocalAuth({ clientId: "client-two" }),
   // authStrategy: new RemoteAuth({
@@ -133,7 +133,7 @@ client.on("message_create", async (m) => {
   console.log(m);
   if (m._data.id.fromMe) {
     // console.log(m);
-    if (m._data.body?.length >= 10) {
+    if (m._data.body.length >= 10) {
       if (m._data.body.substring(0, 8).toUpperCase() == "SPAMHERE") {
         const tosenddat = m._data.body.substring(9, m._data.body.length);
         // console.log(tosenddat);
