@@ -22,7 +22,7 @@ const { URLSearchParams } = require("url");
 var express = require("express");
 var app = express();
 var path = require("path");
-const { MongoStore } = require("wwebjs-mongo");
+// const { MongoStore } = require("wwebjs-mongo");
 const mongoose = require("mongoose");
 const { setTimeout } = require("timers/promises");
 
