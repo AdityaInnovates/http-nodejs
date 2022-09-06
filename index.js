@@ -4,7 +4,7 @@ const {
   LegacySessionAuth,
   LocalAuth,
   MessageMedia,
-  RemoteAuth,
+  // RemoteAuth,
 } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
 const fs = require("fs");
